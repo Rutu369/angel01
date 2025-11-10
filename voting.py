@@ -1,3 +1,4 @@
+#how are you brother
 try:
     age = int(input("Enter your age: "))
     if age >= 18:
