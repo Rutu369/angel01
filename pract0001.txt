@@ -1,0 +1,57 @@
+-- Step 1: Create a Database
+-- A database stores all related tables.
+CREATE DATABASE studentdb;
+
+-- Step 2: Create a Table
+-- A table is created to store student details.
+USE studentdb;
+
+CREATE TABLE Students (
+    RollNo INT PRIMARY KEY,     
+    Name VARCHAR(50),           
+    Course VARCHAR(10),          
+    City VARCHAR(50)             
+);
+
+-- Step 3: Insert Records
+-- Add (insert) 5 students into the table.
+INSERT INTO Students VALUES (1, 'Ravi', 'MCA', 'Belagavi');
+INSERT INTO Students VALUES (2, 'Sneha', 'BCA', 'Hubli');
+INSERT INTO Students VALUES (3, 'Kiran', 'BCA', 'Dharwad');
+INSERT INTO Students VALUES (4, 'Amit', 'MCA', 'Hubli');
+INSERT INTO Students VALUES (5, 'Ravi', 'MCA', 'Hubli');
+
+-- Step 4: Display Table Records
+-- Display all records in the Students table.
+SELECT * FROM Students;
+
+-- Step 5: Update a Record
+-- Change the city of student RollNo = 3 to Bengaluru.
+UPDATE Students
+SET City = 'Bengaluru'
+WHERE RollNo = 3;
+
+-- Step 6: Delete a Record
+-- Delete the record where RollNo = 2.
+DELETE FROM Students
+WHERE RollNo = 2;
+
+-- Step 7: Alter Table (Add a Column)
+-- Add a new column 'College' to store the college name.
+ALTER TABLE Students
+ADD College VARCHAR(100);
+
+-- Step 8: Update Table with College Names
+-- Update the new column with college names.
+UPDATE Students SET College = 'KLE Belagavi' WHERE RollNo = 1;
+UPDATE Students SET College = 'KLE Dharwad' WHERE RollNo = 3;
+UPDATE Students SET College = 'KLE Hubli' WHERE RollNo = 4;
+UPDATE Students SET College = 'KLE Hubli' WHERE RollNo = 5;
+
+-- Step 9: Insert Missing Record (RollNo 2)
+-- Since record 2 was deleted, insert it again.
+INSERT INTO Students VALUES (2, 'YourName', 'MCA', 'Hubli', 'KLE Hubli'); -- enter your name
+
+-- Step 10: Final Table View
+-- Display all final records after all operations.
+SELECT * FROM Students;
