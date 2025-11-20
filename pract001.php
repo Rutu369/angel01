@@ -1,36 +1,37 @@
-<?php
-function showDetails($student) {
-    echo "<h2>Student Details</h2>";
-    echo "Name: " . $student["name"] . "<br>";
-    echo "Roll No: " . $student["rollno"] . "<br>";
-    echo "Marks: " . $student["marks"] . "<br>";
-
-    $marks = $student["marks"];
-
-    if ($marks > 700) {
-        echo "Marks should be under 700!";
-        return; 
-    } elseif ($marks >= 600) {
-        $class = "First Class";
-    } elseif ($marks >= 500) {
-        $class = "Second Class";
-    } elseif ($marks >= 300) {
-        $class = "Third Class";
-    } else {
-        $class = "Failed semester exam";
+#include <iostream>
+#include <string>
+using namespace std;
+class Book {
+private:
+    string title;
+    double price;
+public:
+    Book() {
+        title = "Untitled";
+        price = 0.0;
     }
-
-    echo "Result: " . $class;
+    Book(string t) {
+        title = t;
+        price = 0.0;
+    }
+    Book(string t, double p) {
+        title = t;
+        price = p;
+    }
+    void display() {
+        cout << "Title: " << title << endl;
+        cout << "Price: " << price << endl;
+    }
+};
+int main() {
+    Book b1;                    
+    Book b2("C++ Programming"); 
+    Book b3("Data Structures", 450.50);
+    cout << "Book 1 Details:\n";
+    b1.display();
+    cout << "\nBook 2 Details:\n";
+    b2.display();
+    cout << "\nBook 3 Details:\n";
+    b3.display();
+    return 0;
 }
-
-if ($_POST["name"] != "" && $_POST["rollno"] != "" && $_POST["marks"] != "") {
-    $student = [
-        "name" => $_POST["name"],
-        "rollno" => $_POST["rollno"],
-        "marks" => $_POST["marks"]
-    ];
-    showDetails($student);
-} else {
-    echo "Please enter Name, Roll No, and Marks!";
-}
-?>
