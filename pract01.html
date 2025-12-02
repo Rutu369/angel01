@@ -1,28 +1,35 @@
 #include <iostream>
-#include <string>
 using namespace std;
-class Student {
+
+class Car {
 public:
-    void display(int rollNo) {
-        cout << "Roll Number: " << rollNo << endl;
+    string brand;
+    string model;
+    float price;
+
+    // Function to input details
+    void input() {
+        cout << "Enter brand: ";
+        cin >> brand;
+        cout << "Enter model: ";
+        cin >> model;
+        cout << "Enter price: ";
+        cin >> price;
     }
-    void display(int rollNo, string name) {
-        cout << "Roll Number: " << rollNo << endl;
-        cout << "Name: " << name << endl;
-    }
-        void display(int rollNo, string name, float marks) {
-        cout << "Roll Number: " << rollNo << endl;
-        cout << "Name: " << name << endl;
-        cout << "Marks: " << marks << endl;
+
+    // Function to display details
+    void display() {
+        cout << "\nCar Details:\n";
+        cout << "Brand: " << brand << endl;
+        cout << "Model: " << model << endl;
+        cout << "Price: " << price << endl;
     }
 };
+
 int main() {
-    Student s1;
-    cout << "Displaying only Roll Number:\n";
-    s1.display(101);
-    cout << "\nDisplaying Roll Number and Name:\n";
-    s1.display(102, "ABC");
-    cout << "\nDisplaying Roll Number, Name, and Marks:\n";
-    s1.display(103, "XYZ", 89.5);
+    Car c1;      // Create object
+    c1.input();  // Take input
+    c1.display(); // Show output
+
     return 0;
 }
