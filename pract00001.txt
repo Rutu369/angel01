@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+class Temperature {
+public:
+    // Function to display temperature stored as int
+    void display(int temp) {
+        cout << "Temperature (int): " << temp << endl;
+    }
+
+    // Function to display temperature stored as float
+    void display(float temp) {
+        cout << "Temperature (float): " << temp << endl;
+    }
+
+    // Function to display temperature stored as double
+    void display(double temp) {
+        cout << "Temperature (double): " << temp << endl;
+    }
+};
+
+int main() {
+    Temperature t;
+
+    int tInt = 25;          // whole number
+    float tFloat = 25.6f;   // one decimal
+    double tDouble = 25.6789; // high accuracy
+
+    t.display(tInt);
+    t.display(tFloat);
+    t.display(tDouble);
+
+    return 0;
+}
