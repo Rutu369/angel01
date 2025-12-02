@@ -1,37 +1,30 @@
 #include <iostream>
-#include <string>
 using namespace std;
-class Book {
-private:
-    string title;
-    double price;
+
+class Person {
 public:
-    Book() {
-        title = "Untitled";
-        price = 0.0;
+    // 1. Print only name
+    void printDetails(string name) {
+        cout << "Name: " << name << endl;
     }
-    Book(string t) {
-        title = t;
-        price = 0.0;
+
+    // 2. Print name and age
+    void printDetails(string name, int age) {
+        cout << "Name: " << name << ", Age: " << age << endl;
     }
-    Book(string t, double p) {
-        title = t;
-        price = p;
-    }
-    void display() {
-        cout << "Title: " << title << endl;
-        cout << "Price: " << price << endl;
+
+    // 3. Print name, age and city
+    void printDetails(string name, int age, string city) {
+        cout << "Name: " << name << ", Age: " << age << ", City: " << city << endl;
     }
 };
+
 int main() {
-    Book b1;                    
-    Book b2("C++ Programming"); 
-    Book b3("Data Structures", 450.50);
-    cout << "Book 1 Details:\n";
-    b1.display();
-    cout << "\nBook 2 Details:\n";
-    b2.display();
-    cout << "\nBook 3 Details:\n";
-    b3.display();
+    Person p;
+
+    p.printDetails("Ramesh");
+    p.printDetails("Ramesh", 25);
+    p.printDetails("Ramesh", 25, "Mumbai");
+
     return 0;
 }
