@@ -1,30 +1,36 @@
-#include <iostream>
-using namespace std;
+# Question: Write a Python code for Gauss Elimination method
 
-class Person {
-public:
-    // 1. Print only name
-    void printDetails(string name) {
-        cout << "Name: " << name << endl;
-    }
+import numpy as np
 
-    // 2. Print name and age
-    void printDetails(string name, int age) {
-        cout << "Name: " << name << ", Age: " << age << endl;
-    }
+a = np.array([[2, -1, 3],
+              [0,  1.5, -0.5],
+              [0,  0,   0.66666667]], float)
 
-    // 3. Print name, age and city
-    void printDetails(string name, int age, string city) {
-        cout << "Name: " << name << ", Age: " << age << ", City: " << city << endl;
-    }
-};
+b = np.array([9, 1.5, 2], float)
+n = len(b)
 
-int main() {
-    Person p;
+# Forward elimination (matrix is already upper-triangular here,
+# but code is written in general form)
+for i in range(n - 1):
+    for j in range(i + 1, n):
+        if a[j, i] == 0:
+            continue
+        factor = a[j, i] / a[i, i]
+        for k in range(i, n):
+            a[j, k] = a[j, k] - a[i, k] * factor
+        b[j] = b[j] - b[i] * factor
 
-    p.printDetails("Ramesh");
-    p.printDetails("Ramesh", 25);
-    p.printDetails("Ramesh", 25, "Mumbai");
+print('a=', a)
+print('b=', b)
 
-    return 0;
-}
+# Back substitution
+x = np.zeros(n)
+x[n - 1] = b[n - 1] / a[n - 1, n - 1]
+
+for i in range(n - 2, -1, -1):
+    s = 0
+    for j in range(i + 1, n):
+        s += a[i, j] * x[j]
+    x[i] = (b[i] - s) / a[i, i]
+
+print("x=", x)
