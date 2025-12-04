@@ -1,55 +1,26 @@
-#include <iostream>
-using namespace std;
+# Question: Write a Python code for Gauss–Jordan Method
 
-class Employee {
-private:
-    string empName;
-    double basicSalary;
-    double bonus;
-    double totalSalary;
+import numpy as np
 
-    // Private function to calculate total salary
-    void calculateTotal() {
-        totalSalary = basicSalary + bonus;
-    }
+# Augmented matrix [A | b]
+a = np.array([[ 2.,  1., -1.,  8.],
+              [-3., -1.,  2., -11.],
+              [-2.,  1.,  2., -3.]])
 
-public:
-    // Function to take input from user
-    void inputDetails() {
-        cout << "Enter Employee Name: ";
-        cin >> empName;
+n = a.shape[0]
 
-        cout << "Enter Basic Salary: ";
-        cin >> basicSalary;
+# Gauss–Jordan elimination
+for i in range(n):
+    # Make the diagonal element 1
+    a[i] = a[i] / a[i, i]
 
-        cout << "Enter Bonus: ";
-        cin >> bonus;
+    # Make all other entries in this column 0
+    for j in range(n):
+        if i != j:
+            a[j] = a[j] - a[j, i] * a[i]
 
-        calculateTotal(); // compute total salary
-    }
+print("Gauss–Jordan reduced matrix (RREF):")
+print(a)
 
-    // Function to display employee details
-    void displayDetails() {
-        cout << "\n--- Employee Details ---\n";
-        cout << "Name: " << empName << endl;
-        cout << "Basic Salary: " << basicSalary << endl;
-        cout << "Bonus: " << bonus << endl;
-        cout << "Total Salary: " << totalSalary << endl;
-    }
-};
-
-int main() {
-    Employee e1, e2; // multiple employee objects
-
-    cout << "Enter details for Employee 1:\n";
-    e1.inputDetails();
-
-    cout << "\nEnter details for Employee 2:\n";
-    e2.inputDetails();
-
-    // Display details
-    e1.displayDetails();
-    e2.displayDetails();
-
-    return 0;
-}
+print("\nSolution:")
+print("x =", a[0, 3], " y =", a[1, 3], " z =", a[2, 3])
