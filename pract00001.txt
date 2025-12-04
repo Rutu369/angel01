@@ -1,34 +1,18 @@
-#include <iostream>
-using namespace std;
+# Question: Write a Python code for Gauss–Seidel Method
 
-class Temperature {
-public:
-    // Function to display temperature stored as int
-    void display(int temp) {
-        cout << "Temperature (int): " << temp << endl;
-    }
+x = 0.0
+y = 0.0
+z = 0.0
 
-    // Function to display temperature stored as float
-    void display(float temp) {
-        cout << "Temperature (float): " << temp << endl;
-    }
+n = 10   # number of iterations
 
-    // Function to display temperature stored as double
-    void display(double temp) {
-        cout << "Temperature (double): " << temp << endl;
-    }
-};
+print("Iteration\t x\t\t y\t\t z")
 
-int main() {
-    Temperature t;
+for i in range(n):
+    x = (13 - 3*y - 2*z) / 8
+    y = (7 - x - z) / 5
+    z = (9 - 2*x - y) / 6
+    print(f"{i+1}\t\t {x:.4f}\t {y:.4f}\t {z:.4f}")
 
-    int tInt = 25;          // whole number
-    float tFloat = 25.6f;   // one decimal
-    double tDouble = 25.6789; // high accuracy
-
-    t.display(tInt);
-    t.display(tFloat);
-    t.display(tDouble);
-
-    return 0;
-}
+print("\nApproximate solution after", n, "iterations :")
+print(f"x = {x:.4f}  y = {y:.4f}  z = {z:.4f}")
