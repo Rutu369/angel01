@@ -1,26 +1,28 @@
-# Question: Write a Python code for Gauss–Jordan Method
+8. Write a Python program to check linearly independent or dependent
+vectors
 
 import numpy as np
+vectors = [
+[1,1,1,1],
+[1,2,3,2],
+[2,5,6,4],
+[2,6,8,5]
+]
+A = np.array(vectors, dtype=float)
+rank = np.linalg.matrix_rank(A)
+print("Matrix:\n", A)
+print("Rank:", rank)
+print("Number of vectors:", A.shape[0])
+if rank == A.shape[0]:
+print("\nThe vectors are LINEARLY INDEPENDENT,")
+else:
+print("\nThe vectors are LINEARLY DEPENDENT,")
 
-# Augmented matrix [A | b]
-a = np.array([[ 2.,  1., -1.,  8.],
-              [-3., -1.,  2., -11.],
-              [-2.,  1.,  2., -3.]])
-
-n = a.shape[0]
-
-# Gauss–Jordan elimination
-for i in range(n):
-    # Make the diagonal element 1
-    a[i] = a[i] / a[i, i]
-
-    # Make all other entries in this column 0
-    for j in range(n):
-        if i != j:
-            a[j] = a[j] - a[j, i] * a[i]
-
-print("Gauss–Jordan reduced matrix (RREF):")
-print(a)
-
-print("\nSolution:")
-print("x =", a[0, 3], " y =", a[1, 3], " z =", a[2, 3])
+Matrix:
+[[1. 1. 1. 1.]
+[1. 2. 3. 2.]
+[2. 5. 6. 4.]
+[2. 6. 8. 5.]]
+Rank: 3
+Number of vectors: 4
+The vectors are LINEARLY DEPENDENT,
