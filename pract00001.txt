@@ -1,18 +1,25 @@
-# Question: Write a Python code for Gauss–Seidel Method
+9. Write a Python program to find basis and dimension of given vector
+space
 
-x = 0.0
-y = 0.0
-z = 0.0
+import sympy as sp
+vectors = [
+[1, 2, 3],
+[2, 4, 6],
+[1, 0, 1]
+]
+M = sp.Matrix(vectors)
+rref_matrix, pivots = M.rref()
+print("RREF:")
+print(rref_matrix)
+basis = [M.row(i) for i in pivots]
+print("\nBasis for the subspace:")
+for b in basis:
+print(b)
+print("\nDimension of the subspace:", len(basis))
 
-n = 10   # number of iterations
-
-print("Iteration\t x\t\t y\t\t z")
-
-for i in range(n):
-    x = (13 - 3*y - 2*z) / 8
-    y = (7 - x - z) / 5
-    z = (9 - 2*x - y) / 6
-    print(f"{i+1}\t\t {x:.4f}\t {y:.4f}\t {z:.4f}")
-
-print("\nApproximate solution after", n, "iterations :")
-print(f"x = {x:.4f}  y = {y:.4f}  z = {z:.4f}")
+RREF:
+Matrix([[1, 0, 1], [0, 1, 1], [0, 0, 0]])
+Basis for the subspace:
+Matrix([[1, 0, 1]])
+Matrix([[0, 1, 1]])
+Dimension of the subspace: 2
