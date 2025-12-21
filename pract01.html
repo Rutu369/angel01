@@ -1,29 +1,40 @@
-6. Write a Python program to check the consistency of the system of
-linear equation
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
 
-import numpy as np
-A = np.array([
-[2, -1, 3],
-[4, 2, 6],
-[1, 1, 1]
-])
-B = np.array([5, 12, 3])
-n = A.shape[1]
-AB = np.hstack((A, B.reshape(-1, 1)))
-rank_A = np.linalg.matrix_rank(A)
-rank_AB = np.linalg.matrix_rank(AB)
-print("Rank(A) =", rank_A)
-print("Rank([A|B]) =", rank_AB)
-if rank_A == rank_AB:
-print("\nsystem is CONSISTENT")
-if rank_A == n:
-print("-> Unique solution")
-else:
-print("-> Infinite solutions")
-else:
-print("\nsystem is INCONSISTENT")
+   <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Contact Form</span>
+  </div>
+</nav>
 
-Rank(A) = 3
-Rank([A|B]) = 3
-system is CONSISTENT
--> Unique solution
+<div class="container">
+
+ <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Enter your Name</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name">
+</div>
+
+<div class="container">
+ <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Feedback</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div> 
+
+<button type="button" class="btn btn-success">Submit</button>
+
+</div>
+
+  </body>
+</html>
