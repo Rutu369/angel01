@@ -1,0 +1,8 @@
+CREATE Database as lab7 in phpMyAdmin
+
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ename VARCHAR(50),
+    eno VARCHAR(20),
+    department VARCHAR(50)
+);
