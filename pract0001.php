@@ -1,17 +1,21 @@
-<?php
-include 'db.php';
-if ($_POST) {
-    $conn->query("INSERT INTO employees (ename, eno, department)
-    VALUES ('$_POST[ename]','$_POST[eno]','$_POST[department]')");
-    echo "Employee Inserted";
+3.  Write a program to Handle division by zero and negative number 
+using multiple catch blocks. 
+#include <iostream> 
+using namespace std; 
+int main() { 
+int a = 10, b = 0; 
+try { 
+if (b == 0) 
+throw 1; 
+if (a < 0) 
+throw 'a'; 
+cout << a / b; 
+} 
+catch (int) { 
+cout << "Division by zero"; 
+} 
+catch (char) { 
+cout << "Negative number"; 
+} 
+return 0; 
 }
-?>
-
-<form method="post">
-Name: <input type="text" name="ename"><br>
-Emp No: <input type="text" name="eno"><br>
-Dept: <input type="text" name="department"><br>
-<input type="submit" value="Insert">
-</form>
-
-<a href="display.php">View Employees</a>
