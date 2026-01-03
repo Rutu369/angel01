@@ -1,17 +1,19 @@
-<?php
-include 'db.php';
-$r = $conn->query("SELECT * FROM employees");
-
-echo "<table border=1>
-<tr><th>ID</th><th>Name</th><th>No</th><th>Dept</th><th>Action</th></tr>";
-
-while ($d = $r->fetch_assoc())
-    echo "<tr>
-    <td>$d[id]</td><td>$d[ename]</td><td>$d[eno]</td><td>$d[department]</td>
-    <td><a href='delete.php?id=$d[id]'>Delete</a></td>
-    </tr>";
-
-echo "</table>";
-?>
-
-<a href="insert.php">Add Employee</a>
+4. Write a program to Show how to handle an exception safely inside a 
+destructor. 
+#include <iostream> 
+using namespace std; 
+class Test { 
+public: 
+~Test() { 
+try { 
+throw "Error in destructor"; 
+} 
+catch (const char* msg) { 
+cout << msg; 
+} 
+} 
+}; 
+int main() { 
+Test t; 
+return 0; 
+}
