@@ -1,21 +1,24 @@
-3.  Write a program to Handle division by zero and negative number 
-using multiple catch blocks. 
-#include <iostream> 
-using namespace std; 
-int main() { 
-int a = 10, b = 0; 
-try { 
-if (b == 0) 
-throw 1; 
-if (a < 0) 
-throw 'a'; 
-cout << a / b; 
-} 
-catch (int) { 
-cout << "Division by zero"; 
-} 
-catch (char) { 
-cout << "Negative number"; 
-} 
-return 0; 
+3. A school wants to store the marks of 3 students in 4 subjects. Write a C++ program to use 
+a two-dimensional array to store the marks. The program should accept the marks from 
+the user and display them in a table format.
+#include<iostream>
+using namespace std;
+int main() {
+ int marks[3][4];
+ // Input marks
+ cout << "Enter marks of 3 students in 4 subjects:\n";
+ for(int i = 0; i < 3; i++) {
+for(int j = 0; j < 4; j++) {
+ cin >> marks[i][j];
+}
+ }
+ // Display marks in table format
+ cout << "\nMarks Table:\n";
+ for(int i = 0; i < 3; i++) {
+ for(int j = 0; j < 4; j++) {
+ cout << marks[i][j] << "\t";
+ }
+ cout << endl;
+ }
+ return 0;
 }
