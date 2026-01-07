@@ -1,16 +1,17 @@
-5. Write a program to handle array index out of bound. 
-#include <iostream> 
-using namespace std; 
-int main() { 
-int arr[3] = {10, 20, 30}; 
-int index = 5; 
-try { 
-if (index >= 3) 
-throw "Index out of bound"; 
-cout << arr[index]; 
-} 
-catch (const char* msg) { 
-cout << msg; 
-} 
-return 0; 
+5. A company stores an employee name using a C++ string object. The system appends the 
+department name to the employee name and displays the modified string.
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+ string empName, dept;
+ cout << "Enter employee name: ";
+ getline(cin, empName);
+ cout << "Enter department: ";
+ getline(cin, dept);
+ empName.append(" - ");
+ empName.append(dept);
+ cout << "Updated employee record: " << empName;
+ return 0;
 }
