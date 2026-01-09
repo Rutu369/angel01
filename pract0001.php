@@ -1,24 +1,58 @@
-3. A school wants to store the marks of 3 students in 4 subjects. Write a C++ program to use 
-a two-dimensional array to store the marks. The program should accept the marks from 
-the user and display them in a table format.
-#include<iostream>
-using namespace std;
-int main() {
- int marks[3][4];
- // Input marks
- cout << "Enter marks of 3 students in 4 subjects:\n";
- for(int i = 0; i < 3; i++) {
-for(int j = 0; j < 4; j++) {
- cin >> marks[i][j];
-}
- }
- // Display marks in table format
- cout << "\nMarks Table:\n";
- for(int i = 0; i < 3; i++) {
- for(int j = 0; j < 4; j++) {
- cout << marks[i][j] << "\t";
- }
- cout << endl;
- }
- return 0;
-}
+lab3. Create a JavaScript program that displays employee details using ES6 features
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Details</title>
+</head>
+<body>
+
+<h2>Employee Details</h2>
+
+<!-- <pre> tag keeps text formatting -->
+<pre id="output"></pre>
+
+<script>
+    // ES6 Class to represent an Employee
+    class Employee {
+        // Constructor initializes object properties
+        constructor(id, name, position, salary) {
+            this.id = id;              // Employee ID
+            this.name = name;          // Employee Name
+            this.position = position;  // Job Role
+            this.salary = salary;      // Salary Amount
+        }
+
+        // Arrow function to return formatted employee details
+        showDetails = () => {
+            return `Employee ID: ${this.id}
+Name: ${this.name}
+Position: ${this.position}
+Salary: ₹${this.salary}
+---------------------------`;
+        }
+    }
+
+    // Creating employee objects
+    const emp1 = new Employee(101, "Ravi", "Manager", 50000);
+    const emp2 = new Employee(102, "Sneha", "Developer", 40000);
+    const emp3 = new Employee(103, "Kiran", "Tester", 35000);
+
+    // Array storing all employees
+    const employees = [emp1, emp2, emp3];
+
+    // Combine all employee details into one text
+    let outputText = "";
+
+    // Loop through each employee and append details
+    for (let emp of employees) {
+        outputText += emp.showDetails() + "\n";
+    }
+
+    // Display final output inside <pre> tag
+    document.getElementById("output").textContent = outputText;
+</script>
+
+</body>
+</html>
