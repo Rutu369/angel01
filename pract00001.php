@@ -1,71 +1,50 @@
-6 LAB program
-Perform table creation, record manipulation (insert, update,
-delete), and table alteration in MySQL
-
-
--- Step 1: Create a Database
--- A database stores all related tables.
-CREATE DATABASE studentdb;
-
-
--- Step 2: Create a Table
--- A table is created to store student details.
-USE studentdb;
-
-CREATE TABLE Students (
-    RollNo INT PRIMARY KEY,     -- Unique student roll number
-    Name VARCHAR(50),           -- Student name (up to 50 letters)
-    Course VARCHAR(50),         -- Course name like MCA/BCA
-    City VARCHAR(50)            -- Student city name
-);
-
-
--- Step 3: Insert Records
--- Add (insert) 5 students into the table.
-INSERT INTO Students VALUES (1, 'Ravi', 'MCA', 'Belagavi');
-INSERT INTO Students VALUES (2, 'Sneha', 'BCA', 'Hubli');
-INSERT INTO Students VALUES (3, 'Kiran', 'BCA', 'Dharwad');
-INSERT INTO Students VALUES (4, 'Anita', 'BCA', 'Belagavi');
-INSERT INTO Students VALUES (5, 'Rahul', 'MCA', 'Hubli');
-
-
--- Step 4: Display Table Records
--- Display all records in the Students table.
-SELECT * FROM Students;
-
-
--- Step 5: Update a Record
--- Change the city of student RollNo = 3 to Bengaluru.
-UPDATE Students
-SET City = 'Bengaluru'
-WHERE RollNo = 3;
-
-
--- Step 6: Delete a Record
--- Delete the record where RollNo = 2.
-DELETE FROM Students
-WHERE RollNo = 2;
-
-
--- Step 7: Alter Table (Add a Column)
--- Add a new column 'College' to store the college name.
-ALTER TABLE Students
-ADD College VARCHAR(100);
-
-
--- Step 8: Update Table with College Names
--- Update the new column with college names.
-UPDATE Students SET College = 'KLE Belagavi' WHERE RollNo = 1;
-UPDATE Students SET College = 'KLE Hubli' WHERE RollNo = 3;
-UPDATE Students SET College = 'KLE Bengaluru' WHERE RollNo = 4;
-UPDATE Students SET College = 'KLE Hubli' WHERE RollNo = 5;
-
-
--- Step 9: Insert Missing Record (RollNo 2)
--- Since record 2 was deleted, insert it again.
-INSERT INTO Students VALUES (2, 'yourname', 'MCA', 'Hubli', 'KLE Hubli');   /// enter you name
-
-
--- Step 10: Final Table View
--- Display all final records after all operations.
-SELECT * FROM Students;
+#include <iostream> 
+using namespace std; 
+// Abstract Base Class 
+class Account { 
+protected: 
+int accountNumber; 
+double balance; 
+public: 
+Account(int accNo, double bal) { 
+accountNumber = accNo; 
+balance = bal; 
+} 
+// Pure virtual function (Abstraction + Virtual Function) 
+virtual void calculateInterest() = 0; 
+void display() { 
+cout << "Account Number: " << accountNumber << endl; 
+cout << "Balance: " << balance << endl; 
+} 
+}; 
+// Derived Class 1 
+class SavingsAccount : public Account { 
+public: 
+SavingsAccount(int accNo, double bal) : Account(accNo, bal) {} 
+// Function Overriding 
+void calculateInterest() { 
+cout << "Savings Account Interest: " << balance * 0.04 << endl; 
+} 
+}; 
+// Derived Class 2 
+class CurrentAccount : public Account { 
+public: 
+CurrentAccount(int accNo, double bal) : Account(accNo, bal) {} 
+// Function Overriding 
+void calculateInterest() { 
+cout << "Current Account has no interest." << endl; 
+} 
+}; 
+int main() { 
+Account* acc; 
+SavingsAccount s(101, 5000); 
+CurrentAccount c(102, 8000); 
+acc = &s; 
+acc->display(); 
+acc->calculateInterest(); 
+cout << endl; 
+acc = &c; 
+acc->display(); 
+acc->calculateInterest(); 
+return 0; 
+} 
