@@ -1,58 +1,53 @@
-lab3. Create a JavaScript program that displays employee details using ES6 features
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Employee Details</title>
-</head>
-<body>
-
-<h2>Employee Details</h2>
-
-<!-- <pre> tag keeps text formatting -->
-<pre id="output"></pre>
-
-<script>
-    // ES6 Class to represent an Employee
-    class Employee {
-        // Constructor initializes object properties
-        constructor(id, name, position, salary) {
-            this.id = id;              // Employee ID
-            this.name = name;          // Employee Name
-            this.position = position;  // Job Role
-            this.salary = salary;      // Salary Amount
-        }
-
-        // Arrow function to return formatted employee details
-        showDetails = () => {
-            return `Employee ID: ${this.id}
-Name: ${this.name}
-Position: ${this.position}
-Salary: ₹${this.salary}
----------------------------`;
-        }
-    }
-
-    // Creating employee objects
-    const emp1 = new Employee(101, "Ravi", "Manager", 50000);
-    const emp2 = new Employee(102, "Sneha", "Developer", 40000);
-    const emp3 = new Employee(103, "Kiran", "Tester", 35000);
-
-    // Array storing all employees
-    const employees = [emp1, emp2, emp3];
-
-    // Combine all employee details into one text
-    let outputText = "";
-
-    // Loop through each employee and append details
-    for (let emp of employees) {
-        outputText += emp.showDetails() + "\n";
-    }
-
-    // Display final output inside <pre> tag
-    document.getElementById("output").textContent = outputText;
-</script>
-
-</body>
-</html>
+#include <iostream> 
+#include <string> 
+using namespace std; 
+class Student { 
+private: 
+int rollNumber; 
+string name; 
+float marks1, marks2, marks3; 
+float average; 
+char grade; 
+public: 
+// Function to read student details 
+void readData() { 
+cout << "Enter Roll Number: "; 
+cin >> rollNumber; 
+cin.ignore(); 
+cout << "Enter Name: "; 
+getline(cin, name); 
+cout << "Enter Marks in Subject 1: "; 
+cin >> marks1; 
+cout << "Enter Marks in Subject 2: "; 
+cin >> marks2; 
+cout << "Enter Marks in Subject 3: "; 
+cin >> marks3; 
+} 
+// Function to calculate grade 
+void calculateGrade() { 
+average = (marks1 + marks2 + marks3) / 3; 
+if (average >= 90) 
+grade = 'A'; 
+else if (average >= 75) 
+grade = 'B'; 
+else if (average >= 60) 
+grade = 'C'; 
+else 
+grade = 'D'; 
+} 
+// Function to display details 
+void display() { 
+cout << "\n--- Student Details ---\n"; 
+cout << "Roll Number : " << rollNumber << endl; 
+cout << "Name        : " << name << endl; 
+cout << "Average     : " << average << endl;
+cout << "Grade       : " << grade << endl;
+} 
+}; 
+int main() { 
+Student s; 
+s.readData(); 
+s.calculateGrade(); 
+s.display(); 
+return 0; 
+}
