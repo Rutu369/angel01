@@ -1,50 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Student Details Form</title>
-</head>
-<body>
-
-<h2>Enter Student Details</h2>
-
-<form method="post" action="process.php">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name"><br><br>
-
-    <label for="rollno">Roll No:</label>
-    <input type="text" id="rollno" name="rollno"><br><br>
-
-    <label for="marks">Marks:</label>
-    <input type="number" id="marks" name="marks"><br><br>
-
-    <input type="submit" value="Submit">
-</form>
-
-</body>
-</html>
-
-
-
-<?php
-// Function to display student details
-function showdetails($student)
-{
-    echo "<h2>Student Details</h2>";
-    echo "Student Name : " . $student["name"] . "<br>";
-    echo "Roll No : " . $student["rollno"] . "<br>";
-    echo "Marks : " . $student["marks"];
+#include <iostream> 
+#include <string> 
+using namespace std; 
+class Student  
+{ 
+       private: 
+          string name; 
+          string yearOfAdmission; 
+         float marks; 
+         string address; 
+      public: 
+         void readDetails() { 
+            cout << "Enter Student Name: "; 
+            getline(cin, name); 
+            cout << "Enter Year of Admission: "; 
+ getline(cin, yearOfAdmission); 
+ cout << "Enter Marks: "; 
+ cin >> marks; 
+ cin.ignore(); // to clear newline after marks 
+ cout << "Enter Address: "; 
+ getline(cin, address); 
+ } 
+void displayDetails()  
+{ 
+cout << "\nStudent Information:\n"; 
+cout << "Name: " << name << endl; 
+cout << "Year of Admission: " << yearOfAdmission << endl; 
+cout << "Marks: " << marks << endl; 
+cout << "Address: " << address << endl; 
+} 
+}; 
+int main()  
+{ 
+Student s; 
+s.readDetails(); 
+s.displayDetails(); 
+return 0; 
 }
-
-// Check if form data is not empty
-if ($_POST["name"] != "" && $_POST["rollno"] != "" && $_POST["marks"] != "") {
-    $student = array(
-        "name" => $_POST["name"],
-        "rollno" => $_POST["rollno"],
-        "marks" => $_POST["marks"]
-    );
-
-    showdetails($student);
-} else {
-    echo "Please enter Name, Roll No, and Marks!";
-}
-?>
